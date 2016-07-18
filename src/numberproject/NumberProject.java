@@ -7,6 +7,7 @@ package NumberProject;
 
 import Help.Help;
 import java.util.ArrayList;
+import static org.apache.commons.lang3.math.NumberUtils.*;
 
 /**
  *
@@ -24,6 +25,14 @@ public class NumberProject {
         ArrayList<Long> LlongNumberArgs = new ArrayList<>();                    //整数の引数を格納するリスト
         
         System.out.println("-------NumberProject Start-------");
+        
+        
+        
+        //nbコンソール用
+        strMainOption = "--pn";
+        LlongNumberArgs.add(103L);
+        LstrSubOption.add("-c");
+        
         
         
         
@@ -93,6 +102,8 @@ public class NumberProject {
                 
             //PrimeNumber呼び出しの場合
             case "--PrimeNumber":
+                OperateHandler oh = new OperateHandler(strMainOption, LstrSubOption, LlongNumberArgs);
+                oh.doOperate();
                 break;
                 
                 
@@ -166,19 +177,4 @@ public class NumberProject {
         return strRtnFormatted;
     }
     
-    
-    //数値化どうかを判別するメソッド
-    private static boolean isNumber(String num) {
-    try {
-        Integer.parseInt(num);
-        return true;
-        } catch (NumberFormatException e) {
-        return false;
-    }
 }
-    
-    
-    
-    
-}
-
