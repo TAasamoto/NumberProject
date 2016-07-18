@@ -22,18 +22,17 @@ import java.io.File;
  */
 public class Help {
     private File file;                                                          //ファイルオープン用
-    private String argument;                                                    //引数確認用
-    
+    private String strMainOption;                                               //引数確認用
     /**
      * インスタンス生成時
      * 引数に何が入っているかを確認する。nullでも動作する。
      * 
-     * @param args
+     * @param strMainOption 
      */
-    public Help(String args){
-        argument = args;
-        if(argument == null){
-            argument = "";
+    public Help(String strMainOption){
+        this.strMainOption = strMainOption;
+        if(strMainOption == null){
+            strMainOption = "";
         }
     }
     
@@ -43,11 +42,10 @@ public class Help {
      * コンソールで呼び出される機能すべてのヘルプを同パッケージ内に作成すること。
      */
     public void SysOutPrintHelp(){
-        switch (argument){
-            case "":                                                            //引数がない場合
-                
-                
-                
+        switch (strMainOption){
+            case "--Help":                                                      //引数がない場合
+                Overview overview = new Overview();
+                overview.printHelp();
                 
                 break;
             

@@ -18,7 +18,7 @@ public class Overview {
     }
     
     
-    public void printOverview(){
+    public void printHelp(){
         System.out.println("" + sep +
                 "--------How To Use NumberProject--------" + sep +
                 "Usage : " + sep +

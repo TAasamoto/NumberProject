@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package numberproject;
+package NumberProject;
 
 import Help.Help;
 import java.util.ArrayList;
-import org.apache.commons.lang3.math.NumberUtils;
 
 /**
  *
@@ -32,7 +31,7 @@ public class NumberProject {
         for(String input: args){
             
             //入力が数値の場合
-            if(NumberUtils.isNumber(input)){
+            if(isNumber(input)){
                 
                 //入力が負の値の場合、小数点がある場合、18桁以上の数値の場合
                 if(input.contains("-") || input.contains(".") || input.length() > 18){
@@ -79,6 +78,8 @@ public class NumberProject {
         
         //基本機能オプション内文字列整形
         strMainOption = formatMainOption(strMainOption);
+        System.out.println(strMainOption);
+        
         
         //各機能呼び出し
         switch (strMainOption){
@@ -165,4 +166,19 @@ public class NumberProject {
         return strRtnFormatted;
     }
     
+    
+    //数値化どうかを判別するメソッド
+    private static boolean isNumber(String num) {
+    try {
+        Integer.parseInt(num);
+        return true;
+        } catch (NumberFormatException e) {
+        return false;
+    }
 }
+    
+    
+    
+    
+}
+
