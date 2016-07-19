@@ -30,7 +30,7 @@ public class NumberProject {
         
         //nbコンソール用
         strMainOption = "--pn";
-        LlongNumberArgs.add(103L);
+        LlongNumberArgs.add(2129L);
         LstrSubOption.add("-c");
         
         

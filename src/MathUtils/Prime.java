@@ -56,20 +56,26 @@ public class Prime {
         CSVFileIO csvFile = new CSVFileIO("");
         LlongPrimeList = csvFile.getNumberList();
         
+        System.out.println("checkPrime : " + longCheckNumber);
+        
         //既存の素数リストにない場合
         if(!LlongPrimeList.contains(longCheckNumber)){
             
             //既存の素数の最大値
             long longNumber = LlongPrimeList.get(LlongPrimeList.size() - 1);
             
+            
+            //計算制限値
+            long longCheckLimit = getCheckLimit(longCheckNumber);
+            
             //調べる数値の平方根が既存の素数の最大値より小さい場合
-            if(getCheckLimit(longCheckNumber) < longNumber){
+            if(longCheckLimit < longNumber){
                 
                 for(long PrimeNum: LlongPrimeList){
-                    if(PrimeNum > getCheckLimit(longCheckNumber))break;
+                    if(PrimeNum > longCheckLimit)break;
                     
                     //素数で割り切れる場合は素数でない
-                    if(longCheckNumber % longNumber == 0)boolRtnCheckPrime = false;
+                    if(longCheckNumber % PrimeNum == 0)boolRtnCheckPrime = false;
                 }
                 
             //調べる数値の平方根が既存の素数の最大値より大きい場合
@@ -77,7 +83,7 @@ public class Prime {
             }else{
                 
                 //因数分解を試みる数値が調べる数値の平方根よりも小さい間
-                while(longNumber <= getCheckLimit(longCheckNumber)){
+                while(longNumber <= longCheckLimit){
                     longNumber += 2;
                     
                     //除算値が素数である場合
@@ -88,6 +94,7 @@ public class Prime {
                         
                         //新しく素数がわかったので、csvファイルに追加
                         csvFile.addNumberList(longNumber);
+                        System.out.println(longNumber + "を素数リストに追加します。");
                     }
                 //新しくわかった素数を追加保存
                 csvFile.outCSVfile();
@@ -196,9 +203,12 @@ public class Prime {
     //このメソッドは、引数の数値の平方根に一番近い整数を返す。
     private Long getCheckLimit(long longCheckNumber){
         long rtnlongLimitNumber = longCheckNumber;
+        
+        System.out.println("CheckLimit:Input  : " + rtnlongLimitNumber);
         for(int i = 0; i < 10; i++){
-            rtnlongLimitNumber = (longCheckNumber + (rtnlongLimitNumber / 2 + 1) / 2 + 1);
+            rtnlongLimitNumber = ((rtnlongLimitNumber + (longCheckNumber / rtnlongLimitNumber + 1)) / 2) + 1;
         }
+        System.out.println("CheckLimit:Output : " + rtnlongLimitNumber);
         return rtnlongLimitNumber;
     }
     
