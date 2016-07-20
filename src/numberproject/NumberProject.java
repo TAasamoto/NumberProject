@@ -20,6 +20,9 @@ public class NumberProject {
      * 機能を追加した場合、略称をformatメソッドにも記述すること。
      */
     public static void main(String[] args) {
+        
+        long longStartTime = System.currentTimeMillis();
+        
         String strMainOption = "";                                              //「--」のついた、基本機能についての情報を格納する変数
         ArrayList<String> LstrSubOption = new ArrayList<>();                    //「-」のついた、基本機能追加オプションを格納するリスト
         ArrayList<Long> LlongNumberArgs = new ArrayList<>();                    //整数の引数を格納するリスト
@@ -29,9 +32,10 @@ public class NumberProject {
         
         
         //nbコンソール用
+        long longRepeat = 5000L;
         strMainOption = "--pn";
-        LlongNumberArgs.add(2129L);
-        LstrSubOption.add("-c");
+        LlongNumberArgs.add(longRepeat);
+        LstrSubOption.add("-ar");
         
         
         
@@ -113,6 +117,19 @@ public class NumberProject {
                 
                 
         }
+        long longEndTime = System.currentTimeMillis();
+        long longRunTime = longEndTime - longStartTime;
+        double dblOnceTime = longRunTime / longRepeat;
+        double dblOptionalTime = dblOnceTime * 10000000L;
+        double dblOptionalMinute = dblOptionalTime / 60000L;
+        double dblOptionalHour = dblOptionalTime / 3600000L;
+        double dblOptionalDay = dblOptionalTime / 86400000L;
+        System.out.println("RunTime  : " + String.valueOf(longRunTime) + "ms");
+        System.out.println("OnceTime : " + String.valueOf(dblOnceTime) + "ms");
+        System.out.println("OnceTime : " + String.valueOf(dblOptionalTime) + "ms");
+        System.out.println("OnceTime : " + String.valueOf(dblOptionalMinute) + "Minute");
+        System.out.println("OnceTime : " + String.valueOf(dblOptionalHour) + "Hour");
+        System.out.println("OnceTime : " + String.valueOf(dblOptionalDay) + "Day");
         System.out.println("-------NumberProject End-------");
     }
     

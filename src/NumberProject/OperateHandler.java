@@ -6,7 +6,7 @@
 package NumberProject;
 
 import Help.Help;
-import MathUtils.Prime;
+import MathUtils.Prime.Prime;
 import java.util.ArrayList;
 
 /**

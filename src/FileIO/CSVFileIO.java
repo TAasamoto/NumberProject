@@ -66,18 +66,18 @@ public class CSVFileIO {
                 }
             }
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             return LlongNumberList;
         }
     }
 
-    public void outCSVfile() {
+    public void outCSVfile(boolean boolIsAppend) {
 
         try {
             //出力先を作成する
-            FileWriter fw = new FileWriter(FilePath + FileName, true);          //true : appendモード(行追加)
+            FileWriter fw = new FileWriter(FilePath + FileName, boolIsAppend);          //true : appendモード(行追加)
             PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
 
             //ファイル
